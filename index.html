@@ -27,8 +27,8 @@
   html, body{
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="10" fill="none" stroke="%23f2c14e" stroke-width="1.6" opacity="0.9"/><line x1="14" y1="1" x2="14" y2="4" stroke="%235fe8ff" stroke-width="1.4"/><line x1="14" y1="24" x2="14" y2="27" stroke="%235fe8ff" stroke-width="1.4"/><line x1="1" y1="14" x2="4" y2="14" stroke="%235fe8ff" stroke-width="1.4"/><line x1="24" y1="14" x2="27" y2="14" stroke="%235fe8ff" stroke-width="1.4"/><circle cx="14" cy="14" r="2" fill="%23ff3e94"/></svg>') 14 14, crosshair;
   }
-  #panel, #panel *, #panel-toggle, #enter-overlay, #enter-overlay *, #music-widget, #music-widget *{ cursor:auto; }
-  #panel button, #panel-toggle, .radio-row label, .control-group.inline label, select, input[type="range"], input[type="color"], #enter-btn, #musicToggle{ cursor:pointer; }
+  #panel, #panel *, #panel-toggle, #enter-overlay, #enter-overlay *, #music-widget, #music-widget *, #site-credit{ cursor:auto; }
+  #panel button, #panel-toggle, .radio-row label, .control-group.inline label, select, input[type="range"], input[type="color"], #enter-btn, #musicToggle, #site-credit{ cursor:pointer; }
 
   /* ---- entry overlay ---- */
   #enter-overlay{
@@ -69,6 +69,15 @@
   }
   #music-widget input[type="range"]{ width:70px; }
   .music-label{ white-space:nowrap; font-family:'Inter',sans-serif; max-width:140px; overflow:hidden; text-overflow:ellipsis; }
+
+  /* ---- site credit ---- */
+  #site-credit{
+    position:fixed; bottom:14px; right:18px; z-index:10;
+    font-family:'Inter',sans-serif; font-size:10.5px; letter-spacing:0.02em;
+    color:var(--ink-dim); opacity:0.55; text-decoration:none;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+  #site-credit:hover{ opacity:1; color:var(--gold); }
 
   /* ---- toggle button ---- */
   #panel-toggle{
@@ -347,6 +356,8 @@
 
   <p class="hint">Move your cursor across the canvas to draw. Speed and direction shape the pattern.</p>
 </div>
+
+<a id="site-credit" href="https://github.com/JaredBecker/mandala" target="_blank" rel="noopener">Made with ❤ by some guy named Jared</a>
 
 <script>
   // ---------- state, driven by the panel ----------
