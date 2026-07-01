@@ -386,6 +386,7 @@
   let ytPlayer = null;
   let musicReady = false;
   let musicPlaying = false;
+  let hasEntered = false;
 
   function onYouTubeIframeAPIReady(){
     ytPlayer = new YT.Player('yt-player', {
@@ -397,9 +398,17 @@
         onReady: () => {
           musicReady = true;
           ytPlayer.setVolume(70);
+          if (hasEntered) startMusic();
         }
       }
     });
+  }
+
+  function startMusic(){
+    if (!musicReady || !ytPlayer || musicPlaying) return;
+    ytPlayer.playVideo();
+    musicPlaying = true;
+    document.getElementById('musicToggle').textContent = '⏸';
   }
 
   function setup(){
@@ -622,11 +631,8 @@
       $('enter-overlay').classList.add('hidden');
       $('music-widget').classList.add('visible');
       lastX = null; lastY = null;
-      if (musicReady && ytPlayer){
-        ytPlayer.playVideo();
-        musicPlaying = true;
-        $('musicToggle').textContent = '⏸';
-      }
+      hasEntered = true;
+      startMusic();
     });
 
     $('musicToggle').addEventListener('click', () => {
